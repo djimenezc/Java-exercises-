@@ -23,8 +23,8 @@ public class OutputFormatting {
 
         System.out.println("================================");
         System.out.format("%-15s%03d\n", result.get(0).split(" ")[0], Integer.parseInt(result.get(0).split(" ")[1]));
-        System.out.format("%-15s%03d\n", result.get(1).split(" ")[0], Integer.parseInt(result.get(1).split(" ")[1]));
-        System.out.format("%-15s%03d\n", result.get(2).split(" ")[0], Integer.parseInt(result.get(2).split(" ")[1]));
+        System.out.format("%-15s%03d\n", result.get(1).split(" ")[1], Integer.parseInt(result.get(1).split(" ")[1]));
+        System.out.format("%-15s%03d\n", result.get(2).split(" ")[2], Integer.parseInt(result.get(2).split(" ")[1]));
         System.out.println("================================");
 
     }
