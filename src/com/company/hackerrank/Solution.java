@@ -11,6 +11,7 @@ public class Solution {
     public static void main(String[] args) {
 
 
+//        Scanner s = new Scanner(new File("files/1Darray/input1.txt"));
         Scanner s = new Scanner(System.in);
         String firstLine = s.nextLine();
         String secondLine = s.nextLine();

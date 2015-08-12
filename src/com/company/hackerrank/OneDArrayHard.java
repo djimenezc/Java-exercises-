@@ -2,18 +2,24 @@ package com.company.hackerrank;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
 public class OneDArrayHard {
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static String FILE_NUMBER = "1";
+    public static String INPUT_FILE = "files/1Darray/input"+FILE_NUMBER+".txt";
+    public static String EXPECTED_RESULT_FILE = "files/1Darray/output"+FILE_NUMBER+".txt";
+    public static String RESULT_FILE = "files/tmp/tmp.txt";
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
 
 
 //        Scanner s = new Scanner(System.in);
-        Scanner s = new Scanner(new File("files/1Darray/input1.txt"));
+        Scanner s = new Scanner(new File(INPUT_FILE));
 
         String firstLine = s.nextLine();
 //        String firstLine = "1";
@@ -58,7 +64,7 @@ public class OneDArrayHard {
 
                     if (path.get(position + 1) == 0) {
                         position += 1;
-                    }  else if (path.get(position + m) == 0) {
+                    } else if (path.get(position + m) == 0) {
                         position += m;
                     } else if (position - 1 > 0 && path.get(position - 1) == 0) {
                         position -= 1;
@@ -79,15 +85,38 @@ public class OneDArrayHard {
         }
 
 
+        PrintWriter writer = new PrintWriter(RESULT_FILE, "UTF-8");
+
         for (Boolean result : resultArray) {
 
-            if(result) {
+            if (result) {
 
                 System.out.println("YES");
+                writer.println("YES");
             } else {
 
                 System.out.println("NO");
+                writer.println("NO");
             }
         }
+
+        writer.close();
+
+        Scanner sOutput = new Scanner(new File(RESULT_FILE));
+        Scanner sExpectedOut = new Scanner(new File(EXPECTED_RESULT_FILE));
+
+        boolean isOutputCorrect = true;
+
+        while (sOutput.hasNext() && sExpectedOut.hasNext()) {
+
+            String resultLine = sOutput.nextLine();
+            String expectedResultLine = sExpectedOut.nextLine();
+
+            if(!resultLine.equals(expectedResultLine)) {
+                isOutputCorrect = false;
+            }
+        }
+
+        System.out.println("Verification " + isOutputCorrect);
     }
 }
