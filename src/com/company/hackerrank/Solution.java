@@ -9,6 +9,36 @@ import java.util.regex.*;
 public class Solution {
 
     public static void main(String[] args) {
-        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+
+
+        Scanner s = new Scanner(System.in);
+        String firstLine = s.nextLine();
+        String secondLine = s.nextLine();
+        String thirdLine = s.nextLine();
+
+
+        System.out.println();
+
+        boolean bool = false;
+
+        while (bool) {
+
+        }
+
+        try {
+
+        } catch (Exception e1) {
+
+        }
+
+        ArrayList<String> result = new ArrayList<String>();
+
+        for (String string: result) {
+
+        }
+
+        for (int i = 0; i < 10; i++) {
+
+        }
     }
 }
