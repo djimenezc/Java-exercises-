@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class OneDArrayHard {
 
-    public static String FILE_NUMBER = "2";
+    public static String FILE_NUMBER = "3";
     private static final String FILE_FOLDER = "files/1Darray/";
     public static String INPUT_FILE = FILE_FOLDER + "input" + FILE_NUMBER + ".txt";
     public static String EXPECTED_RESULT_FILE = FILE_FOLDER + "output" + FILE_NUMBER + ".txt";
@@ -23,9 +23,6 @@ public class OneDArrayHard {
         Scanner s = new Scanner(new File(INPUT_FILE));
 
         String firstLine = s.nextLine();
-//        String firstLine = "1";
-//        String secondLine = "3 1";
-//        String thirdLine = "0 1 0";
 
         int t = Integer.parseInt(firstLine);
         List<Integer> nArray = new ArrayList<Integer>();
@@ -57,7 +54,6 @@ public class OneDArrayHard {
 
             int position = 0;
             Boolean backward = false;
-
 
             do {
 
