@@ -17,8 +17,7 @@ public class Solution {
     public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
 
 
-//        Scanner s = new Scanner(new File("files/1Darray/input1.txt"));
-        PrintWriter writer = new PrintWriter(RESULT_FILE, "UTF-8");
+//        Scanner s = new Scanner(new File(INPUT_FILE));
         Scanner s = new Scanner(System.in);
         String firstLine = s.nextLine();
         String secondLine = s.nextLine();
@@ -51,6 +50,8 @@ public class Solution {
         for (int i = 0; i < 10; i++) {
 
         }
+
+        PrintWriter writer = new PrintWriter(RESULT_FILE, "UTF-8");
 
 
         for (Boolean resultVar : resultArray) {
