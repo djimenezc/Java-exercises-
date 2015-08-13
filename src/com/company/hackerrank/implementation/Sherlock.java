@@ -1,4 +1,4 @@
-package com.company.hackerrank.algorithms;
+package com.company.hackerrank.implementation;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -7,11 +7,12 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
-public class SoluctionMini {
+public class Sherlock {
 
     public static String FILE_NUMBER = "1";
-    private static final String FILE_FOLDER = "files/1Darray/";
+    private static final String FILE_FOLDER = "files/sherlock/";
     public static String INPUT_FILE = FILE_FOLDER + "input" + FILE_NUMBER + ".txt";
     public static String EXPECTED_RESULT_FILE = FILE_FOLDER + "output" + FILE_NUMBER + ".txt";
     public static String RESULT_FILE = "files/tmp/tmp.txt";
@@ -21,16 +22,38 @@ public class SoluctionMini {
         PrintWriter writer = new PrintWriter(RESULT_FILE, "UTF-8");
         Scanner s = new Scanner(new File(INPUT_FILE));
 //        Scanner s = new Scanner(System.in);
-        Integer numberEntries =  Integer.parseInt(s.nextLine());
-        String numbers = s.nextLine();
+        Integer t = Integer.parseInt(s.nextLine());
 
-        List<Boolean> resultArray = new ArrayList<Boolean>();
+        for (int i = 0; i < t; i++) {
+            String string = s.nextLine();
+            Integer numberString = Integer.parseInt(string);
 
+            String result = "";
+            int threeCounter = numberString / 3;
+            int fiveCounter = 0;
 
-        System.out.println("");
+            while (threeCounter >= 0) {
 
+                int rem = numberString - threeCounter * 3;
+                if (rem % 5 == 0) {
 
-        writer.println("a");
+                    fiveCounter = rem / 5;
+                    break;
+                }
+                threeCounter -= 1;
+            }
+
+            if (threeCounter <= 0 && fiveCounter == 0) {
+
+                result = "-1";
+            } else {
+                result = new String(new char[threeCounter]).replace("\0", "555") + new String(new char[fiveCounter]).replace
+                        ("\0", "33333" );
+            }
+
+            System.out.println(result);
+            writer.println(result);
+        }
 
         writer.close();
 
@@ -40,14 +63,16 @@ public class SoluctionMini {
         boolean isOutputCorrect = true;
         int lineNumber = 0;
 
-        while (sOutput.hasNext() && sExpectedOut.hasNext()) {
+        while (sOutput.hasNext() && sExpectedOut.hasNext())
+
+        {
 
             String resultLine = sOutput.nextLine();
             String expectedResultLine = sExpectedOut.nextLine();
 
             if (!resultLine.equals(expectedResultLine)) {
                 isOutputCorrect = false;
-                System.out.println("Failing in line "+ (lineNumber+1));
+                System.out.println("Failing in line " + (lineNumber + 1));
             }
             lineNumber++;
         }
