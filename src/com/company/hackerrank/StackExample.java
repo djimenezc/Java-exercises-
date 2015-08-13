@@ -11,7 +11,7 @@ import java.util.Stack;
 
 public class StackExample {
 
-    public static String FILE_NUMBER = "1";
+    public static String FILE_NUMBER = "2";
     private static final String FILE_FOLDER = "files/stackExample/";
     public static String INPUT_FILE = FILE_FOLDER + "input" + FILE_NUMBER + ".txt";
     public static String EXPECTED_RESULT_FILE = FILE_FOLDER + "output" + FILE_NUMBER + ".txt";
@@ -29,23 +29,27 @@ public class StackExample {
             inputArrayList.add(s.nextLine());
         }
 
-        boolean result = false;
         PrintWriter writer = new PrintWriter(RESULT_FILE, "UTF-8");
 
-        for (String string: inputArrayList) {
+        for (String string : inputArrayList) {
 
             Stack<Character> st = new Stack<Character>();
+            boolean result;
 
-            for (Character ch: string.toCharArray()) {
+            for (Character ch : string.toCharArray()) {
 
-                if(ch == '{' || ch == '[' || ch == '(') {
+                if (ch == '{' || ch == '[' || ch == '(') {
                     st.push(ch);
                 } else {
-                    if(ch == '}' && st.peek() == '{') {
+                    if (st.empty()) {
+                        //unbalanced
+                        st.push('e');
+                        break;
+                    } else if (ch == '}' && st.peek() == '{') {
                         st.pop();
-                    } else if(ch == ']' && st.peek() == '[') {
+                    } else if (ch == ']' && st.peek() == '[') {
                         st.pop();
-                    } else if(ch == ')' && st.peek() == '(') {
+                    } else if (ch == ')' && st.peek() == '(') {
                         st.pop();
                     } else {
                         break;// unbalanced
@@ -74,7 +78,7 @@ public class StackExample {
 
             if (!resultLine.equals(expectedResultLine)) {
                 isOutputCorrect = false;
-                System.out.println("Failing in line "+ (lineNumber+1));
+                System.out.println("Failing in line " + (lineNumber + 1));
             }
             lineNumber++;
         }
