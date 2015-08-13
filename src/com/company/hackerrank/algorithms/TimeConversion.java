@@ -8,10 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class SoluctionMini {
+public class TimeConversion {
 
-    public static String FILE_NUMBER = "1";
-    private static final String FILE_FOLDER = "files/1Darray/";
+    public static String FILE_NUMBER = "2";
+    private static final String FILE_FOLDER = "files/timeConversion/";
     public static String INPUT_FILE = FILE_FOLDER + "input" + FILE_NUMBER + ".txt";
     public static String EXPECTED_RESULT_FILE = FILE_FOLDER + "output" + FILE_NUMBER + ".txt";
     public static String RESULT_FILE = "files/tmp/tmp.txt";
@@ -21,16 +21,32 @@ public class SoluctionMini {
 
         Scanner s = new Scanner(new File(INPUT_FILE));
 //        Scanner s = new Scanner(System.in);
-        Integer numberEntries =  Integer.parseInt(s.nextLine());
-        String numbers = s.nextLine();
+        String input = s.nextLine();
 
         List<Boolean> resultArray = new ArrayList<Boolean>();
 
+        Integer hh = Integer.parseInt(input.substring(0, 2));
+        String mm = input.substring(3, 5);
+        String ss = input.substring(6, 8);
+        String amPm = input.substring(8, 10);
+
+
+        if (amPm.equals("PM")) {
+            hh += 12;
+        } else if (amPm.equals("AM") && hh ==12){
+            hh = 0;
+        }
+
+        String newHh = String.format("%02d", hh);
+
+        String result = newHh + ":" + mm + ":" + ss;
+        System.out.println(result);
 
 
         PrintWriter writer = new PrintWriter(RESULT_FILE, "UTF-8");
 
-        writer.println("a");
+
+        writer.println(result);
 
         writer.close();
 
@@ -47,7 +63,7 @@ public class SoluctionMini {
 
             if (!resultLine.equals(expectedResultLine)) {
                 isOutputCorrect = false;
-                System.out.println("Failing in line "+ (lineNumber+1));
+                System.out.println("Failing in line " + (lineNumber + 1));
             }
             lineNumber++;
         }
