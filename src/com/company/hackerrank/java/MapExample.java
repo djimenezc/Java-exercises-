@@ -1,18 +1,19 @@
-package com.company.hackerrank;
+package com.company.hackerrank.java;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
-import java.util.Stack;
 
-public class StackExample {
+public class MapExample {
 
-    public static String FILE_NUMBER = "2";
-    private static final String FILE_FOLDER = "files/stackExample/";
+    public static String FILE_NUMBER = "1";
+    private static final String FILE_FOLDER = "files/map/";
     public static String INPUT_FILE = FILE_FOLDER + "input" + FILE_NUMBER + ".txt";
     public static String EXPECTED_RESULT_FILE = FILE_FOLDER + "output" + FILE_NUMBER + ".txt";
     public static String RESULT_FILE = "files/tmp/tmp.txt";
@@ -22,45 +23,38 @@ public class StackExample {
 
         Scanner s = new Scanner(new File(INPUT_FILE));
 //        Scanner s = new Scanner(System.in);
+        String firstLine = s.nextLine();
+//        String secondLine = s.nextLine();
+//        String thirdLine = s.nextLine();
 
-        ArrayList<String> inputArrayList = new ArrayList<String>();
 
-        while (s.hasNext()) {
-            inputArrayList.add(s.nextLine());
+        int n = Integer.parseInt(firstLine);
+
+        Map<String, Integer> phoneBook = new HashMap<String, Integer>();
+
+
+        for (int j = 0; j < n; j++) {
+
+            String name = s.nextLine();
+            Integer phoneNumber = Integer.parseInt(s.nextLine());
+            phoneBook.put(name, phoneNumber);
         }
 
         PrintWriter writer = new PrintWriter(RESULT_FILE, "UTF-8");
 
-        for (String string : inputArrayList) {
+        while (s.hasNext()) {
 
-            Stack<Character> st = new Stack<Character>();
-            boolean result;
+            String name = s.nextLine();
+            String msg;
 
-            for (Character ch : string.toCharArray()) {
-
-                if (ch == '{' || ch == '[' || ch == '(') {
-                    st.push(ch);
-                } else {
-                    if (st.empty()) {
-                        //unbalanced
-                        st.push('e');
-                        break;
-                    } else if (ch == '}' && st.peek() == '{') {
-                        st.pop();
-                    } else if (ch == ']' && st.peek() == '[') {
-                        st.pop();
-                    } else if (ch == ')' && st.peek() == '(') {
-                        st.pop();
-                    } else {
-                        break;// unbalanced
-                    }
-                }
+            if(phoneBook.containsKey(name)) {
+                msg =  name + "=" + phoneBook.get(name).intValue();
+                System.out.println(msg);
+                writer.println(msg);
+            } else {
+                System.out.println("Not found");
+                writer.println("Not found");
             }
-
-            result = st.empty();
-
-            System.out.println(result);
-            writer.println(result);
         }
 
         writer.close();

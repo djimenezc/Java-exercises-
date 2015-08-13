@@ -1,4 +1,4 @@
-package com.company.hackerrank;
+package com.company.hackerrank.java;
 
 import javafx.util.Pair;
 

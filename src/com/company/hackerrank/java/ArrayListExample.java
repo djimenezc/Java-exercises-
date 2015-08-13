@@ -1,4 +1,4 @@
-package com.company.hackerrank;
+package com.company.hackerrank.java;
 
 import java.io.File;
 import java.io.FileNotFoundException;
