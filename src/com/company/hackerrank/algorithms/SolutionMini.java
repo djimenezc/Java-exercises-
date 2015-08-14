@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class SoluctionMini {
+public class SolutionMini {
 
     public static String FILE_NUMBER = "1";
     private static final String FILE_FOLDER = "files/1Darray/";
