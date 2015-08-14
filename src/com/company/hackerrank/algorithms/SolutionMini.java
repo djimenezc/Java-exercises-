@@ -10,11 +10,11 @@ import java.util.Scanner;
 
 public class SolutionMini {
 
-    public static String FILE_NUMBER = "1";
+    public static final String FILE_NUMBER = "1";
     private static final String FILE_FOLDER = "files/1Darray/";
-    public static String INPUT_FILE = FILE_FOLDER + "input" + FILE_NUMBER + ".txt";
-    public static String EXPECTED_RESULT_FILE = FILE_FOLDER + "output" + FILE_NUMBER + ".txt";
-    public static String RESULT_FILE = "files/tmp/tmp.txt";
+    public static final String INPUT_FILE = FILE_FOLDER + "input" + FILE_NUMBER + ".txt";
+    public static final String EXPECTED_RESULT_FILE = FILE_FOLDER + "output" + FILE_NUMBER + ".txt";
+    public static final String RESULT_FILE = "files/tmp/tmp.txt";
 
     public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
 
