@@ -1,4 +1,4 @@
-package com.company.hackerrank.algorithms;
+package com.company.hackerrank.implementation;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -8,10 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class SoluctionMini {
+public class ChocolateFeast {
 
     public static String FILE_NUMBER = "1";
-    private static final String FILE_FOLDER = "files/1Darray/";
+    private static final String FILE_FOLDER = "files/chocolateFeast/";
     public static String INPUT_FILE = FILE_FOLDER + "input" + FILE_NUMBER + ".txt";
     public static String EXPECTED_RESULT_FILE = FILE_FOLDER + "output" + FILE_NUMBER + ".txt";
     public static String RESULT_FILE = "files/tmp/tmp.txt";
@@ -22,18 +22,29 @@ public class SoluctionMini {
         Scanner s = new Scanner(new File(INPUT_FILE));
 //        Scanner s = new Scanner(System.in);
         Integer t = Integer.parseInt(s.nextLine());
-        String numbers = s.nextLine();
-        String result = "";
+        int result = 0;
 
         List<Boolean> resultArray = new ArrayList<Boolean>();
 
         for (int i = 0; i < t; i++) {
 
+            String buy = s.nextLine();
+            int n = Integer.parseInt(buy.split(" ")[0]);
+            int c = Integer.parseInt(buy.split(" ")[1]);
+            int m = Integer.parseInt(buy.split(" ")[2]);
+
+            int resultTmp = n / c;
+            int giftChocolate = (int) Math.floor(resultTmp / m);
+            int moreGiftChocolate = 0;
+
+            if (resultTmp % m != 0) {
+                moreGiftChocolate = (int) Math.floor((giftChocolate + resultTmp % m) / m);
+            }
+            result = resultTmp + giftChocolate + moreGiftChocolate;
+
+            System.out.println(result);
+            writer.println(result);
         }
-
-
-        System.out.println(result);
-        writer.println(result);
 
         writer.close();
 
