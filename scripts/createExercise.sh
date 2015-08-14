@@ -9,6 +9,7 @@ echo "*) implementation"
 echo "*) java"
 echo "*) strings"
 echo "*) sorting"
+echo "*) dynamicProgramming"
 read type
 
 mkdir $PWD/files/${name}
