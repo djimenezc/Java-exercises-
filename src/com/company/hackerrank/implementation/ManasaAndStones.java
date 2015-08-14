@@ -5,8 +5,12 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class ManasaAndStones {
 
@@ -22,18 +26,31 @@ public class ManasaAndStones {
         Scanner s = new Scanner(new File(INPUT_FILE));
 //        Scanner s = new Scanner(System.in);
         Integer t = Integer.parseInt(s.nextLine());
-        String numbers = s.nextLine();
-        String result = "";
-
-        List<Boolean> resultArray = new ArrayList<Boolean>();
 
         for (int i = 0; i < t; i++) {
+            Integer n = Integer.parseInt(s.nextLine());
+            Integer a = Integer.parseInt(s.nextLine());
+            Integer b = Integer.parseInt(s.nextLine());
+            StringBuilder builder = new StringBuilder();
 
+            Set<Integer> solutions = new TreeSet<Integer>();
+
+            for (int j = 0; j < n; j++) {
+
+                solutions.add(a * j + b * (n - j - 1));
+            }
+
+            for (Integer value : solutions) {
+                if (builder.length() > 0) {
+                    builder.append(" ");
+                }
+                builder.append(value);
+            }
+
+            System.out.println(builder.toString());
+            writer.println(builder.toString());
         }
 
-
-        System.out.println(result);
-        writer.println(result);
 
         writer.close();
 
